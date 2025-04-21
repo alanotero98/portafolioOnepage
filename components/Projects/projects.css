@@ -1,0 +1,97 @@
+.projects-section {
+    min-height: 100vh;
+    background-color: #0F172A; /* bg-blue-800 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+  }
+  
+  .projects-container {
+    max-width: 1200px;
+    width: 100%;
+    padding: 1.5rem;
+  }
+  
+  .projects-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+  
+  .project-card {
+    height: 100%;
+    border-radius: 0.75rem;
+    display: flex;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    width: 90%;
+  }
+  
+  .project-card:hover {
+    background-color: #16233F;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border-top: 0.5px solid rgba(255, 255, 255, 0.099);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.399);
+  }
+  
+  .project-image {
+    width: 25%; /* Ocupa el 30% del espacio disponible */
+    height: 80px; /* Establece una altura fija para la imagen */
+    object-fit: cover; /* Asegura que la imagen no se desborde */
+   
+}
+  
+  .project-image img {
+    border-radius: 5px;
+    width: 100%; /* La imagen ocupa todo el ancho del contenedor */
+    height: 100%; /* La imagen ocupa toda la altura del contenedor */
+    object-fit: cover; /* La imagen se recorta para mantener la proporción y llenar el contenedor */
+  }
+  
+  .project-content {
+    width: 70%; /* El contenido ocupa el 70% */
+    padding-left: 2rem;
+  }
+  
+  .project-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff; /* text-teal-400 */
+    margin-bottom: 0.5rem;
+  }
+  
+  .project-description {
+    color: #C5D1D8; /* text-gray-400 */
+    margin-bottom: 1rem;
+  }
+  
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .tags span {
+    background-color: #122B39; /* bg-gray-800 */
+    color: #56D7C6; /* text-teal-400 */
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+  }
+  
+  .project-link {
+    color: #56D7C6; /* text-teal-400 */
+    font-size: 1rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  .project-link:hover {
+    color: #4C9A2A; /* text-teal-500 */
+  }
+  

@@ -1,0 +1,55 @@
+/* Footer.css */
+
+/* Estilos generales del footer */
+.footer {
+    margin-top: 10%;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+  }
+  
+  /* Contenedor principal */
+  .footer-container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  /* Estilos para la sección de los logos */
+  .footer-logos {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20%;
+  }
+  
+  /* Estilos para cada logo */
+  .logo {
+    font-size: 80px; /* Tamaño de los íconos */
+    color: white;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Efecto hover en los logos */
+  .logo:hover {
+    transform: scale(1.1);  /* Aumenta ligeramente el tamaño al pasar el ratón */
+  }
+  
+  /* Estilo del texto de los objetivos */
+  .footer-text {
+    font-size: 22px;
+    margin-bottom: 25%;
+    line-height: 1.6;
+  }
+  
+  /* Estilo de los derechos de autor */
+  .footer-rights {
+    font-size: 0.9rem;
+    margin-top: 30%;
+    color: #aaaaaa;
+  }
+  
+  /* Agrega un pequeño espaciado entre los elementos del footer */
+  .footer p {
+    margin-top: 10%;
+  }
+  
