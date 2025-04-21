@@ -13,7 +13,6 @@ export default function Page() {
   const isScrollingRef = useRef(false)
   const pages = [<Hero />, <Experience />, <Projects />, <Footer />]
   const deltaThreshold = 1 // Umbral mínimo para deltaY
-  const lastScrollY = useRef(0) // Para detectar la dirección del scroll
 
   useEffect(() => {
     const handleWheel = (event: WheelEvent) => {
