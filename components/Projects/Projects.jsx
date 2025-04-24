@@ -22,7 +22,7 @@ export default function Projects() {
             </div>
             <div className="project-content">
               <h3 className="project-title">Sitio web para Culinary</h3>
-              <p className="project-description">Descripción del proyecto, lo que hiciste, herramientas utilizadas.</p>
+              <p className="project-description">Sitio web con nuevo diseño para Culinary.</p>
               <div className="tags">
                 <span>React</span>
                 <span>TailwindCSS</span>
@@ -38,7 +38,7 @@ export default function Projects() {
             </div>
             <div className="project-content">
               <h3 className="project-title">Plataforma de cursos digitales para Volvo</h3>
-              <p className="project-description">Descripción del proyecto.</p>
+              <p className="project-description"> Plataforma de cursos con LearnDash LMS para conductores de Volvo.</p>
               <div className="tags">
                 <span>Node.js</span>
                 <span>MongoDB</span>
