@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+// app/layout.tsx
+import { Metadata } from "next";
+import MobileWarning from "@/components/MobileWarning";
 import "./globals.css";
-
 
 export const metadata: Metadata = {
   title: "alanotero.dev",
@@ -15,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-       
+        <MobileWarning />
         {children}
       </body>
     </html>
