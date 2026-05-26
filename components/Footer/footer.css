@@ -37,7 +37,7 @@
   /* Estilo del texto de los objetivos */
   .footer-text {
     font-size: 22px;
-    margin-bottom: 25%;
+    margin-bottom: 20%;
     line-height: 1.6;
   }
   
@@ -51,5 +51,53 @@
   /* Agrega un pequeño espaciado entre los elementos del footer */
   .footer p {
     margin-top: 10%;
+  }
+
+  @media (max-width: 767px) {
+    .footer {
+      margin-top: 0;
+      padding: 2.75rem 1rem 3rem;
+      text-align: left;
+    }
+
+    .footer-container {
+      width: 100%;
+    }
+
+    .footer-logos {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .logo {
+      width: 100%;
+      min-height: 4.4rem;
+      padding: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      border-radius: 0.75rem;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.82));
+      color: #e5edf8;
+      font-size: 2.2rem;
+    }
+
+    .footer-text {
+      margin-bottom: 1.5rem;
+      color: #a2b1cb;
+      font-size: 1rem;
+      line-height: 1.72;
+    }
+
+    .footer-rights {
+      margin-top: 1.5rem;
+      color: #7f8aa3;
+      font-size: 0.78rem;
+      line-height: 1.5;
+    }
+
+    .footer p {
+      margin-top: 0;
+    }
   }
   

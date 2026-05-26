@@ -2,7 +2,65 @@
 import { motion } from 'framer-motion'
 import './projects.css'
 
+const projects = [
+  {
+    title: 'Sitio web para Culinary',
+    description: 'Sitio web con nuevo diseno para Culinary.',
+    href: 'https://culinary.cl/',
+    image: '/culinary.png',
+    alt: 'Culinary.cl',
+    tags: ['WordPress', 'PHP', 'Templates personalizados', 'CSS']
+  },
+  {
+    title: 'Marketplace para Buscador Agricola',
+    description: 'Marketplace enfocado en el sector agricola y el campo chileno.',
+    href: 'https://buscadoragricola.cl/',
+    image: 'https://buscadoragricola.cl/wp-content/uploads/2026/01/Logo-1.png',
+    alt: 'Buscador Agricola',
+    tags: ['WordPress', 'PHP', 'Dokan', 'WooCommerce'],
+    containImage: true
+  },
+  {
+    title: 'Pagina web para Reconnect Travel',
+    description: 'Pagina para guia turista y experiencias de viaje.',
+    href: 'https://www.reconnect.travel/',
+    image: 'https://usercontent.one/wp/www.reconnect.travel/wp-content/uploads/2025/09/Vector.png?media=1760635054',
+    alt: 'Reconnect Travel',
+    tags: ['WordPress', 'Elementor Pro'],
+    containImage: true
+  },
+  {
+    title: 'Sitio web para Volvo Chile',
+    description: 'Sitio web corporativo para Volvo Chile.',
+    href: 'https://volvochile.cl/',
+    image: '/volvo.jpg',
+    alt: 'Volvo Chile',
+    tags: ['WordPress', 'Automotriz', 'Web']
+  },
+  {
+    title: 'Sitio web para MiRetail',
+    description: 'Plataforma web para soluciones y servicios de retail.',
+    href: 'https://miretail.cl/',
+    image: 'https://miretail.cl/wp-content/uploads/2024/10/Logo-MiRetail-Bajada-2.png',
+    alt: 'MiRetail',
+    tags: ['WordPress', 'Retail', 'Web'],
+    containImage: true
+  },
+  {
+    title: 'Cooagropecuario',
+    description: 'Proyecto agropecuario actualmente en construccion.',
+    href: 'https://cooagropecuario.10001mb.com/',
+    image: '/globe.svg',
+    alt: 'Cooagropecuario',
+    tags: ['En construccion', 'Agro', 'Web'],
+    containImage: true,
+    status: 'En construccion'
+  }
+]
+
 export default function Projects() {
+  const carouselProjects = [...projects, ...projects]
+
   return (
     <motion.section
       id="projects"
@@ -13,55 +71,42 @@ export default function Projects() {
       viewport={{ once: true }}
     >
       <div className="projects-container">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {/* Proyecto 1 */}
-        <a href='https://culinary.cl//'  className="list-none block no-underline text-inherit">
-          <div className="project-card">
-            <div className="project-image">
-              <img src="/culinary.png" alt="Culinary.cl" />
-            </div>
-            <div className="project-content">
-              <h3 className="project-title">Sitio web para Culinary</h3>
-              <p className="project-description">Sitio web con nuevo diseño para Culinary.</p>
-              <div className="tags">
-                <span>React</span>
-                <span>TailwindCSS</span>
-              </div>
-            </div>
-          </div>
-         </a>
-          {/* Proyecto 2 */}
-          <a href='https://lms.fenomena.cl/'  className="list-none block no-underline text-inherit">
-          <div className="project-card">
-            <div className="project-image">
-              <img src="/volvo.jpg" alt="Proyecto 2" />
-            </div>
-            <div className="project-content">
-              <h3 className="project-title">Plataforma de cursos digitales para Volvo</h3>
-              <p className="project-description"> Plataforma de cursos con LearnDash LMS para conductores de Volvo.</p>
-              <div className="tags">
-                <span>Node.js</span>
-                <span>MongoDB</span>
-              </div>
-            </div>
-          </div>
-          </a>
-          {/* Proyecto 3 */}
-          <div className="project-card">
-            <div className="project-image">
-              <img src="/godisdead.jpg" alt="Proyecto 3" />
-            </div>
-            <div className="project-content">
-              <h3 className="project-title">Pagina web de remeras para God is Dead</h3>
-              <p className="project-description">Descripción del proyecto.</p>
-              <div className="tags">
-                <span>JavaScript</span>
-                <span>HTML</span>
-              </div>
-            </div>
+        <div className="projects-header">
+          <p className="projects-eyebrow">Proyectos</p>
+          <h2 className="projects-title">Productos web, marketplaces y experiencias digitales.</h2>
+        </div>
+
+        <div className="projects-carousel" aria-label="Carrusel vertical de proyectos">
+          <div className="projects-track">
+            {carouselProjects.map((project, index) => (
+              <a
+                key={`${project.title}-${index}`}
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-link-card"
+              >
+                <article className="project-card">
+                  <div className={`project-image ${project.containImage ? 'project-image-contain' : ''}`}>
+                    <img src={project.image} alt={project.alt} />
+                  </div>
+
+                  <div className="project-content">
+                    {project.status && <span className="project-status">{project.status}</span>}
+                    <h3 className="project-title">{project.title}</h3>
+                    <p className="project-description">{project.description}</p>
+                    <div className="tags">
+                      {project.tags.map((tag) => (
+                        <span key={tag}>{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                </article>
+              </a>
+            ))}
           </div>
         </div>
       </div>
     </motion.section>
-  );
+  )
 }
