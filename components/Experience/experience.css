@@ -373,17 +373,20 @@
 
   .tags {
     max-height: none;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.42rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.32rem;
   }
 
   .tags span {
     min-width: 0;
-    text-align: center;
+    max-width: 100%;
+    padding: 0.2rem 0.48rem;
+    text-align: left;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size: 0.58rem;
   }
 
   .experience-modal {
@@ -391,6 +394,17 @@
     max-height: calc(100dvh - 1rem);
     border-radius: 1rem;
     padding: 1rem;
+  }
+
+  .experience-modal-overlay {
+    position: fixed;
+    inset: 0;
+    min-height: 100dvh;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    z-index: 100;
+    overscroll-behavior: none;
   }
 
   .experience-modal-header {

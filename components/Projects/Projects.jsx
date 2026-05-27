@@ -1,4 +1,5 @@
 'use client'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import './projects.css'
 
@@ -59,7 +60,20 @@ const projects = [
 ]
 
 export default function Projects() {
+  const [isMobile, setIsMobile] = useState(false)
   const carouselProjects = [...projects, ...projects]
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px)')
+    const syncMobileState = () => setIsMobile(mediaQuery.matches)
+
+    syncMobileState()
+    mediaQuery.addEventListener('change', syncMobileState)
+
+    return () => {
+      mediaQuery.removeEventListener('change', syncMobileState)
+    }
+  }, [])
 
   return (
     <motion.section
@@ -79,12 +93,16 @@ export default function Projects() {
         <div className="projects-carousel" aria-label="Carrusel vertical de proyectos">
           <div className="projects-track">
             {carouselProjects.map((project, index) => (
-              <a
+              <motion.a
                 key={`${project.title}-${index}`}
                 href={project.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="project-link-card"
+                initial={isMobile ? { opacity: 0, x: index % 2 === 0 ? -34 : 34 } : false}
+                whileInView={isMobile ? { opacity: 1, x: 0 } : undefined}
+                viewport={isMobile ? { once: true, amount: 0.32 } : undefined}
+                transition={isMobile ? { duration: 0.45, ease: 'easeOut' } : undefined}
               >
                 <article className="project-card">
                   <div className={`project-image ${project.containImage ? 'project-image-contain' : ''}`}>
@@ -102,7 +120,7 @@ export default function Projects() {
                     </div>
                   </div>
                 </article>
-              </a>
+              </motion.a>
             ))}
           </div>
         </div>

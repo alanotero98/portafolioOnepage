@@ -84,6 +84,24 @@ export default function Experience({ isActive = true }) {
     };
   }, [selectedExperienceId]);
 
+  useEffect(() => {
+    if (!selectedExperienceId || typeof window === 'undefined') return;
+
+    const isMobileViewport = window.matchMedia('(max-width: 767px)').matches;
+    if (!isMobileViewport) return;
+
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
+    };
+  }, [selectedExperienceId]);
+
   const stopModalScrollPropagation = (event) => {
     event.stopPropagation();
   };

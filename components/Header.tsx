@@ -14,6 +14,7 @@ export default function Header({ currentPage, sections, onNavigate }: HeaderProp
     { id: "about", label: "Acerca de mi" },
     { id: "experience", label: "Experiencia" },
     { id: "projects", label: "Proyectos" },
+    { id: "music", label: "Mi música" },
     { id: "goals", label: "Mis objetivos" },
   ];
 
@@ -32,7 +33,7 @@ export default function Header({ currentPage, sections, onNavigate }: HeaderProp
         <div className="header-top">
           <div className="header-intro">
             <h1>Alan Otero</h1>
-            <h2>Desarrollador Front-End</h2>
+            <h2>Desarrollador Full Stack</h2>
             <p>
               Creo experiencias digitales accesibles <br />
               y con pixeles perfectos para la web.

@@ -21,7 +21,7 @@ export default function Footer() {
         
         {/* Texto de Objetivos */}
         <p className="footer-text">
-         Busco seguir creando experiencias digitales innovadoras mientras evoluciono como desarrollador y creativo. Mi objetivo es construir un negocio SaaS propio y continuar participando en proyectos que me reten, me inspiren y me impulsen a crecer tanto a nivel técnico como personal.
+        Busco seguir creando experiencias digitales innovadoras mientras evoluciono como desarrollador y creativo. Mi objetivo es construir un negocio SaaS propio y continuar participando en proyectos que me reten, me inspiren y me impulsen a crecer tanto a nivel técnico como personal.
         </p>
 
         {/* Derechos de autor */}

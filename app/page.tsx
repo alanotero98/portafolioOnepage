@@ -6,12 +6,14 @@ import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import Experience from '@/components/Experience/Experience'
 import Projects from '@/components/Projects/Projects'
+import Music from '@/components/Music/Music'
 import Footer from '@/components/Footer/Footer'
 
 const sections = [
   { id: 'about', label: 'Acerca de mi' },
   { id: 'experience', label: 'Experiencia' },
   { id: 'projects', label: 'Proyectos' },
+  { id: 'music', label: 'Mi música' },
   { id: 'goals', label: 'Mis objetivos' },
 ]
 
@@ -30,7 +32,7 @@ export default function Page() {
   const wheelEndTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const transitionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const touchStartYRef = useRef<number | null>(null)
-  const pages = [<Hero />, <Experience isActive={currentPage === 1} />, <Projects />, <Footer />]
+  const pages = [<Hero />, <Experience isActive={currentPage === 1} />, <Projects />, <Music />, <Footer />]
 
   const lockTransition = () => {
     isTransitioningRef.current = true
@@ -258,6 +260,24 @@ export default function Page() {
             {PageComponent}
           </motion.div>
         ))}
+      </div>
+      <div className="desktop-scroll-progress" aria-label="Navegacion por secciones">
+        <div className="scroll-progress-rail" aria-hidden="true">
+          <span style={{ height: `${((currentPage + 1) / PAGE_COUNT) * 100}%` }} />
+        </div>
+
+        <div className="scroll-progress-dots">
+          {sections.map((section, index) => (
+            <button
+              key={section.id}
+              type="button"
+              className={currentPage === index ? 'active' : ''}
+              onClick={() => handleNavigate(index)}
+              aria-label={`Ir a ${section.label}`}
+              aria-current={currentPage === index ? 'page' : undefined}
+            />
+          ))}
+        </div>
       </div>
     </main>
   )
