@@ -17,8 +17,8 @@ const sections = [
   { id: 'goals', label: 'Mis objetivos' },
 ]
 
-const TRANSITION_LOCK_MS = 1600
-const WHEEL_GESTURE_END_MS = 600
+const TRANSITION_LOCK_MS = 750
+const WHEEL_GESTURE_END_MS = 320
 const WHEEL_DELTA_THRESHOLD = 12
 const TOUCH_DELTA_THRESHOLD = 48
 const PAGE_COUNT = sections.length
@@ -32,6 +32,7 @@ export default function Page() {
   const wheelEndTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const transitionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const touchStartYRef = useRef<number | null>(null)
+  const mobileScrollRafRef = useRef<number | null>(null)
   const pages = [<Hero />, <Experience isActive={currentPage === 1} />, <Projects />, <Music />, <Footer />]
 
   const lockTransition = () => {
@@ -121,11 +122,13 @@ export default function Page() {
       const wasWheelGestureActive = isWheelGestureActiveRef.current
       markWheelGestureActive()
 
+      const direction = event.deltaY > 0 ? 1 : -1
+
       if (isTransitioningRef.current || wasWheelGestureActive) {
         return
       }
 
-      moveOneSection(event.deltaY > 0 ? 1 : -1)
+      moveOneSection(direction)
     }
 
     const handleTouchStart = (event: TouchEvent) => {
@@ -199,36 +202,58 @@ export default function Page() {
       return
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntry = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+    const syncCurrentSection = () => {
+      mobileScrollRafRef.current = null
 
-        if (!visibleEntry) {
+      const headerHeight = document.querySelector('.site-header')?.getBoundingClientRect().height ?? 0
+      const viewportAnchor = headerHeight + (window.innerHeight - headerHeight) * 0.32
+      let nextIndex = 0
+      let closestDistance = Number.POSITIVE_INFINITY
+
+      sections.forEach((section, index) => {
+        const element = document.getElementById(section.id)
+        if (!element) {
           return
         }
 
-        const nextIndex = sections.findIndex((section) => section.id === visibleEntry.target.id)
-        if (nextIndex >= 0) {
-          setCurrentPage(nextIndex)
-        }
-      },
-      {
-        rootMargin: '-36% 0px -52% 0px',
-        threshold: [0.12, 0.35, 0.6],
-      }
-    )
+        const rect = element.getBoundingClientRect()
 
-    sections.forEach((section) => {
-      const element = document.getElementById(section.id)
-      if (element) {
-        observer.observe(element)
+        if (rect.top <= viewportAnchor && rect.bottom >= viewportAnchor) {
+          nextIndex = index
+          closestDistance = 0
+          return
+        }
+
+        const distance = Math.min(Math.abs(rect.top - viewportAnchor), Math.abs(rect.bottom - viewportAnchor))
+        if (distance < closestDistance) {
+          closestDistance = distance
+          nextIndex = index
+        }
+      })
+
+      setCurrentPage(nextIndex)
+    }
+
+    const scheduleSyncCurrentSection = () => {
+      if (mobileScrollRafRef.current !== null) {
+        return
       }
-    })
+
+      mobileScrollRafRef.current = window.requestAnimationFrame(syncCurrentSection)
+    }
+
+    syncCurrentSection()
+    window.addEventListener('scroll', scheduleSyncCurrentSection, { passive: true })
+    window.addEventListener('resize', scheduleSyncCurrentSection)
 
     return () => {
-      observer.disconnect()
+      window.removeEventListener('scroll', scheduleSyncCurrentSection)
+      window.removeEventListener('resize', scheduleSyncCurrentSection)
+
+      if (mobileScrollRafRef.current !== null) {
+        window.cancelAnimationFrame(mobileScrollRafRef.current)
+        mobileScrollRafRef.current = null
+      }
     }
   }, [isMobile])
 
@@ -242,19 +267,17 @@ export default function Page() {
           <motion.div
             key={index}
             id={sections[index].id}
-            initial={{ opacity: 0, y: 100 }}
-            animate={{
-              opacity: isMobile || currentPage === index ? 1 : 0,
-              y: isMobile || currentPage === index ? 0 : currentPage < index ? 100 : -100,
-            }}
-            exit={{
-              opacity: 0,
-              y: currentPage < index ? -100 : 100,
-            }}
-            transition={{
-              duration: 1.5,
-              ease: 'easeInOut',
-            }}
+            initial={isMobile ? false : { opacity: 0, y: 100 }}
+            animate={
+              isMobile
+                ? { opacity: 1, y: 0 }
+                : {
+                    opacity: currentPage === index ? 1 : 0,
+                    y: currentPage === index ? 0 : currentPage < index ? 100 : -100,
+                  }
+            }
+            exit={isMobile ? undefined : { opacity: 0, y: currentPage < index ? -100 : 100 }}
+            transition={isMobile ? { duration: 0 } : { duration: 0.75, ease: 'easeInOut' }}
             className={`portfolio-panel ${currentPage === index ? 'is-active' : ''}`}
           >
             {PageComponent}
