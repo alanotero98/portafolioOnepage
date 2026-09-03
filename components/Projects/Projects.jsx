@@ -49,7 +49,7 @@ const projects = [
   },
   {
     title: 'Cooagropecuario',
-    description: 'Proyecto agropecuario actualmente en construccion.',
+    description: 'Edición y personalización de themes y plugins en WordPress para Cooagropecuario.',
     href: 'https://cooagropecuaria.coop/',
     image: '/globe.svg',
     alt: 'Cooagropecuario',
