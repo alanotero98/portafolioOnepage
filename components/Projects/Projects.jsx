@@ -50,7 +50,7 @@ const projects = [
   {
     title: 'Cooagropecuario',
     description: 'Proyecto agropecuario actualmente en construccion.',
-    href: 'https://cooagropecuario.10001mb.com/',
+    href: 'https://cooagropecuaria.coop/',
     image: '/globe.svg',
     alt: 'Cooagropecuario',
     tags: ['En construccion', 'Agro', 'Web'],
