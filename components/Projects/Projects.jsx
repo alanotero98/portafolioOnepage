@@ -55,7 +55,6 @@ const projects = [
     alt: 'Cooagropecuario',
     tags: ['En construccion', 'Agro', 'Web'],
     containImage: true,
-    status: 'En construccion'
   }
 ]
 
