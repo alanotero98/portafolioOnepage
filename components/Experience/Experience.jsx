@@ -41,22 +41,22 @@ const experiences = [
     skills: ['WordPress', 'PHP', 'Laravel', 'React', 'Next.js', 'Node.js', 'n8n', 'Automatizaciones', 'Freelance']
   },
   {
-    id: 'marea-lab',
-    period: '2026 - Actualidad',
-    role: 'Desarrollador Web & Creative Tech',
-    company: 'Marea Lab — Colombia',
+    id: 'ikigai',
+    period: 'Mayo 2026 - Actualidad',
+    role: 'Web Manager',
+    company: 'Ikigai Marketing Digital — Argentina',
     shortDescription:
-      'Desarrollo soluciones web, interfaces interactivas, automatizaciones y experiencias digitales para una agencia de branding y diseño.',
+      'Desarrollo de ecommerce, landing pages, automatizaciones, SEO y plugins de WordPress para una agencia de marketing digital.',
     description:
-      'Actualmente trabajo en Marea Lab, una agencia de branding y diseño ubicada en Colombia. Mi rol combina desarrollo web, tecnología creativa, automatizaciones e integración de inteligencia artificial para crear experiencias digitales más completas y estratégicas.',
+      'Actualmente trabajo como Web Manager en Ikigai Marketing Digital, una agencia argentina de marketing digital. Me encargo del desarrollo y optimización de sitios web, ecommerce y landing pages, además de automatizaciones con Google Apps Script, SEO técnico y desarrollo de plugins para WordPress.',
     responsibilities: [
-      'Desarrollo de sitios web, landing pages e interfaces interactivas alineadas con la identidad visual de la marca.',
-      'Implementación de soluciones con React, Next.js, WordPress y Node.js para proyectos digitales escalables.',
-      'Automatización de procesos con n8n y exploración de agentes con IA para potenciar flujos de trabajo.',
-      'Construcción de productos digitales visualmente potentes, funcionales y coherentes con objetivos de branding y conversión.'
+      'Desarrollo y mantenimiento de ecommerce y landing pages orientadas a conversión.',
+      'Automatización de procesos y flujos de trabajo con Google Apps Script.',
+      'Implementación de SEO técnico y optimización de rendimiento de sitios web.',
+      'Desarrollo de plugins y personalizaciones para WordPress.'
     ],
-    stack: ['React', 'Next.js', 'WordPress', 'Node.js', 'n8n', 'IA Agents', 'Automatizaciones', 'Branding Digital', 'Creative Tech'],
-    skills: ['React', 'Next.js', 'WordPress', 'Node.js', 'n8n', 'IA Agents', 'Automatizaciones', 'Branding Digital', 'Creative Tech']
+    stack: ['WordPress', 'Plugins WordPress', 'Ecommerce', 'Landing Pages', 'Google Apps Script', 'Automatizaciones', 'SEO', 'Optimización Web'],
+    skills: ['WordPress', 'Plugins WordPress', 'Ecommerce', 'Landing Pages', 'Google Apps Script', 'Automatizaciones', 'SEO', 'Optimización Web']
   }
 ]
 
